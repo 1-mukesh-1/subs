@@ -7,7 +7,7 @@ void solve(){
     int n;
     cin>>n;
     cout<<n<<endl;
-
+    return;
 }
 
 signed main() {

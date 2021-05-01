@@ -6,8 +6,13 @@ using namespace std;
 void solve(){
     int n;
     cin>>n;
-    cout<<n<<endl;
-
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int maxi=INT_MIN;
+    for(int i=0;i<n;i++) maxi=max(maxi,arr[i]);
+    cout<<maxi<<endl;
 }
 
 signed main() {
@@ -15,7 +20,6 @@ signed main() {
     cin.tie(NULL);
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
     freopen("output.txt", "w", stdout);
 #endif
     int t;

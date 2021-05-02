@@ -1,18 +1,33 @@
 #include<bits/stdc++.h>
-#define int long long
 #define endl "\n"
 using namespace std;
 
-void solve(){
-    int n;
-    cin>>n;
-    int arr[n];
+vector<int> memo(2000000,-100);
+
+int ways(vector<int> arr,int k,int n){
+    if(k==0) return 1;
+    if(k<0) return 0;
+    int summ=0;
     for(int i=0;i<n;i++){
-        cin>>arr[i];
+        int req=k-arr[i];
+        int temp=0;
+        if(req>0) temp=memo[req];
+        if(temp==-100 || req<=0)
+        {
+            temp=ways(arr,req,n);
+            if(req>0) memo[req]=temp;
+        }
+        summ+=temp;
     }
-    int maxi=INT_MIN;
-    for(int i=0;i<n;i++) maxi=max(maxi,arr[i]);
-    cout<<maxi<<endl;
+    return summ;
+}
+
+void solve(){
+    int n,k;
+    cin>>n>>k;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++) cin>>arr[i];
+    cout<<ways(arr,k,n);
 }
 
 signed main() {
@@ -22,8 +37,8 @@ signed main() {
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int t;
-    cin>>t;
+    int t=1;
+    // cin>>t;
     while(t--){
         solve();
     }

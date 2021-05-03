@@ -11,14 +11,17 @@ int ways(vector<int> arr,int k,int n){
     for(int i=0;i<n;i++){
         int req=k-arr[i];
         int temp=0;
-        if(req>0) temp=memo[req];
-        if(temp==-100 || req<=0)
+        if(req<=0 || memo[req]==-100)
         {
             temp=ways(arr,req,n);
             if(req>0) memo[req]=temp;
         }
+        else{
+            temp=memo[req];
+        }
         summ+=temp;
     }
+    // cout<<endl;
     return summ;
 }
 

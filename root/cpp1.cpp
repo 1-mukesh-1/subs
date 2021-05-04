@@ -2,35 +2,7 @@
 #define endl "\n"
 using namespace std;
 
-vector<int> memo(2000000,-100);
-
-int ways(vector<int> arr,int k,int n){
-    if(k==0) return 1;
-    if(k<0) return 0;
-    int summ=0;
-    for(int i=0;i<n;i++){
-        int req=k-arr[i];
-        int temp=0;
-        if(req<=0 || memo[req]==-100)
-        {
-            temp=ways(arr,req,n);
-            if(req>0) memo[req]=temp;
-        }
-        else{
-            temp=memo[req];
-        }
-        summ+=temp;
-    }
-    // cout<<endl;
-    return summ;
-}
-
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    vector<int> arr(n);
-    for(int i=0;i<n;i++) cin>>arr[i];
-    cout<<ways(arr,k,n);
 }
 
 signed main() {

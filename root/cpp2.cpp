@@ -3,26 +3,7 @@
 #define endl "\n"
 using namespace std;
 
-int ways(vector<int> arr, int k, int n) {
-	if (k == 0) return 1;
-	if (k < 0) return 0;
-	int summ = 0;
-	for (int i = 0; i < n; i++) {
-		int temp = ways(arr, k - arr[i], n);
-		summ += temp;
-		// cout<<arr[i]<<endl;
-	}
-	return summ;
-}
-
 void solve() {
-	int n, k;
-	cin >> n >> k;
-	vector<int> arr(n);
-	for (int i = 0; i < n; i++) cin >> arr[i];
-	// for(int i=0;i<n;i++) cout<<arr[i]<<" ";
-	// cout<<endl;
-	cout << ways(arr, k, n);
 }
 
 signed main() {

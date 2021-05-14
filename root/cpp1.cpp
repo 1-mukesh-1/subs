@@ -3,7 +3,17 @@
 using namespace std;
 
 void solve(){
-    cout<<"jhi"<<endl;
+    int n,m;
+    cin>>n>>m;
+    int summ=0;
+    int temp;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>temp;
+            summ+=temp*(((n-i)*(m-j))*((i+1)*(j+1)));
+        }
+    }
+    cout<<summ<<endl;
 }
 
 signed main() {
@@ -14,7 +24,7 @@ signed main() {
     freopen("output.txt", "w", stdout);
 #endif
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         solve();
     }

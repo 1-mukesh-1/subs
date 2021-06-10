@@ -1,0 +1,47 @@
+bool islower(char x){
+    return ((int)x-(int)'a'<26 && (int)x-(int)'a'>=0);
+}
+
+bool isupper(char x){
+    return ((int)x-(int)'A'<26 && (int)x-(int)'A'>=0);
+}
+
+char toupper(char x){
+    int extra=(int)x-(int)'a';
+    int nc=(int)'A'+extra;
+    return (char)nc;
+}
+
+char tolower(char x){
+    int extra=(int)x-(int)'A';
+    int nc=(int)'a'+extra;
+    return (char)nc;
+}
+
+class Solution {
+public:
+    void util(string s,vector<string> &ans,int ind,bool toadd){
+        if(toadd){
+            ans.push_back(s);
+        }
+        if(ind==s.length()) return;
+        if(islower(s[ind])){
+            util(s,ans,ind+1,false);
+            s[ind]=toupper(s[ind]);
+            util(s,ans,ind+1,true);
+        }
+        else if(isupper(s[ind])){
+            util(s,ans,ind+1,false);
+            s[ind]=tolower(s[ind]);
+            util(s,ans,ind+1,true);
+        }
+        else{
+            util(s,ans,ind+1,false);
+        }
+    }
+    vector<string> letterCasePermutation(string s) {
+        vector<string> ans;
+        util(s,ans,0,true);
+        return ans;
+    }
+};
